@@ -8,6 +8,9 @@ from kivy.core.window import Window
 from kivymd.uix.filemanager import MDFileManager
 from kivymd.toast import toast
 
+from kivy.uix.scrollview import ScrollView
+from kivy.properties import StringProperty
+
 
 class Tab(FloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
@@ -15,7 +18,7 @@ class Tab(FloatLayout, MDTabsBase):
 
 class Example(MDApp):
     def build(self):
-        return Builder.load_file('template.kv')
+      return Builder.load_file('template.kv')
 
     def on_start(self):
       ''''''
@@ -68,5 +71,8 @@ class Example(MDApp):
             if self.manager_open:
                 self.file_manager.back()
         return True
+
+    class ScrollableLabel(ScrollView):
+        text = StringProperty('')
 
 Example().run()
