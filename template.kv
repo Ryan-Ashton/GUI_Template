@@ -1,0 +1,80 @@
+
+MDBoxLayout:
+    orientation: "vertical"
+
+    MDToolbar:
+        title: "Example Tabs"
+
+    MDTabs:
+        id: tabs
+        on_tab_switch: app.on_tab_switch(*args)
+
+        Tab:
+            text: "My Tab 1"
+          
+            MDBoxLayout:
+                padding: "50dp"
+                orientation: 'vertical'
+
+                MDLabel:
+                    text: "MDLabel is pretty cool to use let's see what this does"
+                    font_style: 'H4'
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 1, 1
+                    pos_hint: {"center_x": .5, "center_y": 1}
+                    
+
+            
+            MDBoxLayout:
+                padding: "50dp"
+                orientation: 'vertical'
+                # size_hint_y: None
+                # adaptive_height: True
+            
+                MDTextField:
+                    id: text_field_error
+                    hint_text: "Helper text on error (press 'Enter')"
+                    helper_text: "There will always be a mistake"
+                    helper_text_mode: "on_error"
+                    padding: "100dp"
+
+                
+                MDTextField:
+                    id: text_field_error
+                    hint_text: "Helper text on error (press 'Enter')"
+                    helper_text: "There will always be a mistake"
+                    helper_text_mode: "on_error"
+                    padding: "100dp"
+                    
+
+                MDRoundFlatIconButton:
+                    text: "Open manager"
+                    icon: "folder"
+                    
+                    on_release: app.file_manager_open()
+
+
+        Tab:
+            text: "My Tab 2"
+
+            MDRoundFlatIconButton:
+                text: "Open manager"
+                icon: "folder"
+                
+                on_release: app.file_manager_open()
+
+        Tab:
+            text: "My Tab 3"
+
+<Tab>:
+
+    MDFloatLayout:
+        padding: "0dp"
+        orientation: 'vertical'
+
+    MDLabel:
+        id: label
+        halign: "auto"
+        padding_y: "0dp"
+
+
