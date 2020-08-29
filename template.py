@@ -1,5 +1,6 @@
 from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
+from kivymd.uix.boxlayout import MDBoxLayout
 
 from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
@@ -10,6 +11,12 @@ from kivymd.toast import toast
 
 from kivy.uix.scrollview import ScrollView
 from kivy.properties import StringProperty
+from kivy.properties import ObjectProperty
+from kivymd.uix.button import MDFlatButton, MDRoundFlatIconButton
+from kivy.uix.textinput import TextInput 
+from kivy.uix.widget import Widget
+
+import pandas as pd
 
 
 class Tab(FloatLayout, MDTabsBase):
@@ -17,6 +24,10 @@ class Tab(FloatLayout, MDTabsBase):
 
 
 class Example(MDApp):
+
+    featureOne = ObjectProperty(None)
+    featureTwo = ObjectProperty(None)
+
     def build(self):
       return Builder.load_file('template.kv')
 
@@ -43,8 +54,6 @@ class Example(MDApp):
         self.file_manager.show(r'C:\Users\Admin\OneDrive\Documents')  # output manager to the screen
         self.manager_open = True
 
-    def ext(self):
-      '''check''' # Need to work out how to find excel files
 
     def select_path(self, path):
         '''It will be called when you click on the file name
@@ -54,7 +63,12 @@ class Example(MDApp):
         :param path: path to the selected directory or file;
         '''
         self.exit_manager()
-        toast(path)
+        # toast(path)
+
+        # Use "path" to get the path of file selected from file manager, then can feed it into pandas
+        df = pd.read_excel(path)
+        df.to_csv("I DID IT.csv")
+
 
     def exit_manager(self, *args):
         '''Called when the user reaches the root of the directory tree.'''
@@ -69,6 +83,18 @@ class Example(MDApp):
             if self.manager_open:
                 self.file_manager.back()
         return True
+
+
+    def btn(self):
+
+        # Get the text inputs from the kivy file
+
+        featureOne = self.root.ids.featureOne
+        featureTwo = self.root.ids.featureTwo
+
+        print(featureOne.text, featureTwo.text)
+
+
 
     class ScrollableLabel(ScrollView):
         text = StringProperty('')

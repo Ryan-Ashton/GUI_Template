@@ -1,5 +1,11 @@
 
 <Example>:
+
+    featureOne: featureOne
+    featureTwo: featureTwo
+
+
+
     ScrollView:
         pos_hint: {'center_x': .5}
         size_hint_x: None
@@ -44,7 +50,7 @@ MDBoxLayout:
                     font_style: 'H4'
                     theme_text_color: "Custom"
                     text_color: 0, 0, 1, 1
-                    # pos_hint: {"center_x": .5, "center_y": 1}
+                    pos_hint: {"center_x": .5, "center_y": 1}
                         
 
             
@@ -57,7 +63,7 @@ MDBoxLayout:
                     size_hint_y: None
             
                     MDTextField:
-                        id: text_field_error
+                        id: featureOne
                         hint_text: "Helper text on error (press 'Enter')"
                         helper_text: "There will always be a mistake"
                         helper_text_mode: "on_error"
@@ -66,18 +72,27 @@ MDBoxLayout:
 
                     
                     MDTextField:
-                        id: text_field_error
+                        id: featureTwo
                         hint_text: "Helper text on error (press 'Enter')"
                         helper_text: "There will always be a mistake"
                         helper_text_mode: "on_error"
                         padding: "100dp"
-                        
+
+
+                    MDRaisedButton:
+                        text: "Submit Features"
+                        on_release: app.btn()
+
+
+                MDBoxLayout:
+                    padding: "50dp"
+                    orientation: 'vertical'
 
                     MDRoundFlatIconButton:
                         text: "Open manager"
                         icon: "folder"
-                        
-                        on_release: app.file_manager_open()
+                        on_release: app.file_manager_open()            
+
 
 
         Tab:
