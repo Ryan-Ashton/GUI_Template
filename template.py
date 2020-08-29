@@ -36,8 +36,7 @@ class Example(MDApp):
         self.file_manager = MDFileManager(
             exit_manager=self.exit_manager,
             select_path=self.select_path,
-            preview=False)
-        #self.ext = ['xlsx'] # Need to work out how to find excel files
+            ext=[".csv", ".xlsx"])
 
 
     def file_manager_open(self):
@@ -54,15 +53,14 @@ class Example(MDApp):
         :type path: str;
         :param path: path to the selected directory or file;
         '''
-
         self.exit_manager()
         toast(path)
 
     def exit_manager(self, *args):
         '''Called when the user reaches the root of the directory tree.'''
 
-        self.manager_open = False
-        self.file_manager.close()
+        self.manager_open = True
+        self.file_manager.close()   
 
     def events(self, instance, keyboard, keycode, text, modifiers):
         '''Called when buttons are pressed on the mobile device.'''
