@@ -28,39 +28,95 @@ MDBoxLayout:
 
 
     MDToolbar:
-        title: "Example Tabs"
+        title: "Machine Learning Template"
 
     MDTabs:
         id: tabs
         on_tab_switch: app.on_tab_switch(*args)
 
         Tab:
-            text: "My Tab 1"
+            text: "Option 1 - Upload CSV File"
 
             MDBoxLayout:
                 padding: "50dp"
                 orientation: 'vertical'
                 # size_hint_y: None
 
+                MDBoxLayout:
+                    # padding: "10dp"
+                    orientation: 'vertical'
+                    # size_hint_y: None
 
-                MDLabel:
-                    text: "MDLabel is pretty cool to use let's see what this does aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                    text_size: self.size
-                    valign: 'top'
-                    font_style: 'H4'
-                    theme_text_color: "Custom"
-                    text_color: 0, 0, 1, 1
-                    pos_hint: {"center_x": .5, "center_y": 1}
-                        
 
-            
+                    MDLabel:
+                        text: "Please upload your CSV file with features (Xs)"
+                        text_size: self.size
+                        # valign: 'top'
+                        font_style: 'H4'
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 1, 1
+                        pos_hint: {"center_x": .5, "center_y": 1}
+                            
+
+                    MDBoxLayout:
+                        # padding: "50dp"
+                        orientation: 'vertical'
+
+                        MDRectangleFlatButton:
+                            text: "Open File Manager"
+                            icon: "folder"
+                            size: 300,75
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            # text_color: 0, 0, 1, 1
+                            # md_bg_color: 1, 1, 0, 1
+                            size_hint: None, None
+                            on_release: app.file_manager_open()            
+
+
+
+        Tab:
+            text: "Option 2 - Input Features"
+
+
+
+            MDBoxLayout:
+                # padding: "50dp"
+                orientation: 'vertical'
+                size_hint_y: None
+                adaptive_height: True
+                adaptive_height: True
+                size_hint_y: None
+
+
+
                 MDBoxLayout:
                     padding: "50dp"
                     orientation: 'vertical'
-                    # size_hint_y: None
+                    size_hint_y: None
                     adaptive_height: True
                     adaptive_height: True
                     size_hint_y: None
+
+                    MDLabel:
+                        text: "Please manually enter your features (Xs)"
+                        text_size: self.width, None
+                        size: self.texture_size
+                        # valign: 'top'
+                        font_style: 'H4'
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 1, 1
+                        pos_hint: {"center_x": .5, "center_y": 1}
+
+
+                MDBoxLayout:
+                    padding: "50dp"
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    adaptive_height: True
+                    adaptive_height: True
+                    size_hint_y: None
+
+
             
                     MDTextField:
                         id: featureOne
@@ -68,9 +124,9 @@ MDBoxLayout:
                         helper_text: "There will always be a mistake"
                         helper_text_mode: "on_error"
                         padding: "100dp"
-                        # text_size: self.size
+                        text_size: self.size
 
-                    
+                        
                     MDTextField:
                         id: featureTwo
                         hint_text: "Helper text on error (press 'Enter')"
@@ -79,33 +135,23 @@ MDBoxLayout:
                         padding: "100dp"
 
 
+                MDBoxLayout:
+                    padding: "50dp"
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    adaptive_height: True
+                    adaptive_height: True
+                    size_hint_y: None
+
+
                     MDRaisedButton:
                         text: "Submit Features"
                         on_release: app.btn()
 
 
-                MDBoxLayout:
-                    padding: "50dp"
-                    orientation: 'vertical'
-
-                    MDRoundFlatIconButton:
-                        text: "Open manager"
-                        icon: "folder"
-                        on_release: app.file_manager_open()            
-
-
 
         Tab:
-            text: "My Tab 2"
-
-            MDRoundFlatIconButton:
-                text: "Open manager"
-                icon: "folder"
-                
-                on_release: app.file_manager_open()
-
-        Tab:
-            text: "My Tab 3"
+            text: "Results"
 
 <Tab>:
 
